@@ -8,7 +8,7 @@ jobs:
     name: autoupdate
     runs-on: ubuntu-latest
     steps:
-      - uses: docker://kevinrobayna/autoupdate-action:v1
+      - uses: docker://kevinrobayna/autoupdate:master
         id: autoupdate
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

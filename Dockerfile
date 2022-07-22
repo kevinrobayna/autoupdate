@@ -6,7 +6,7 @@ WORKDIR /opt/autoupdate
 
 COPY . /opt/autoupdate/
 
-RUN yarn install --frozen-lockfile && yarn run build
+RUN npm install --frozen-lockfile && npm run build
 
 FROM node:lts-alpine as runner
 
