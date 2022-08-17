@@ -8,7 +8,7 @@ jobs:
     name: autoupdate
     runs-on: ubuntu-latest
     steps:
-      - uses: kevinrobayna/shipit@v1.7.0
+      - uses: docker://kevinrobayna/shipit@v1.7.0
         id: autoupdate
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
