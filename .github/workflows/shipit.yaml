@@ -8,7 +8,7 @@ jobs:
     name: shipit
     runs-on: ubuntu-latest
     steps:
-      - uses: kevinrobayna/shipit@v1.7.0
+      - uses: kevinrobayna/shipit@v2.0.0
         id: shipit
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
