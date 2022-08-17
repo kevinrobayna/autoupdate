@@ -11,7 +11,7 @@ This is a fork from [chinthakagodawita/autoupdate](https://github.com/chinthakag
 Create a file, in your repository, at `.github/workflows/autoupdate.yaml` with the following:
 
 ```yaml
-name: autoupdate
+name: shipit
 on:
   # This will trigger on all pushes to all branches.
   push: {}
@@ -25,7 +25,7 @@ jobs:
     name: shipit
     runs-on: ubuntu-latest
     steps:
-      - uses: kevinrobayna/shipit@v1.7.0
+      - uses: kevinrobayna/shipit@v2.0.0
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 ```
@@ -94,7 +94,7 @@ jobs:
     name: shipit
     runs-on: ubuntu-latest
     steps:
-      - uses: kevinrobayna/shipit@v1.7.0
+      - uses: kevinrobayna/shipit@v2.0.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DRY_RUN: "false"
@@ -124,7 +124,7 @@ jobs:
     name: shipit
     runs-on: ubuntu-latest
     steps:
-      - uses: kevinrobayna/shipit@v1.7.0
+      - uses: kevinrobayna/shipit@v2.0.0
         id: shipit
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
