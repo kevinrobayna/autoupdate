@@ -1,4 +1,4 @@
-name: 'ShipIt'
+name: 'pr-shipit'
 description: 'A GitHub Action that auto-updates PRs with changes from their destination branch'
 runs:
   using: 'docker'
