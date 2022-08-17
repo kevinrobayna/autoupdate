@@ -2,7 +2,9 @@
 
 ![Tests](https://github.com/chinthakagodawita/autoupdate/workflows/Tests/badge.svg?event=push) [![codecov](https://codecov.io/gh/chinthakagodawita/autoupdate/branch/master/graph/badge.svg)](https://codecov.io/gh/chinthakagodawita/autoupdate)
 
-**autoupdate** is a GitHub Action that auto-updates pull requests branches whenever changes land on their destination branch.
+**shipit** is a GitHub Action that auto-updates pull requests branches whenever changes land on their destination branch.
+
+This is a fork from [chinthakagodawita/autoupdate](https://github.com/chinthakagodawita/autoupdate)
 
 ## Usage
 
@@ -21,9 +23,9 @@ on:
 jobs:
   autoupdate:
     name: autoupdate
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: docker://chinthakagodawita/autoupdate-action:v1
+      - uses: kevinrobayna/shipit@v1.7.0
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
 ```
@@ -90,9 +92,9 @@ on:
 jobs:
   autoupdate:
     name: autoupdate
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: docker://chinthakagodawita/autoupdate-action:v1
+      - uses: kevinrobayna/shipit@v1.7.0
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DRY_RUN: "false"
@@ -120,9 +122,9 @@ on:
 jobs:
   autoupdate:
     name: autoupdate
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: docker://chinthakagodawita/autoupdate-action:v1
+      - uses: kevinrobayna/shipit@v1.7.0
         id: autoupdate
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
