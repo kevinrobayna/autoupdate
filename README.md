@@ -1,4 +1,4 @@
-# autoupdate
+# Ship It!
 
 ![Tests](https://github.com/chinthakagodawita/autoupdate/workflows/Tests/badge.svg?event=push) [![codecov](https://codecov.io/gh/chinthakagodawita/autoupdate/branch/master/graph/badge.svg)](https://codecov.io/gh/chinthakagodawita/autoupdate)
 
@@ -21,8 +21,8 @@ on:
   #     - master
   #     - unstable
 jobs:
-  autoupdate:
-    name: autoupdate
+  shipit:
+    name: shipit
     runs-on: ubuntu-latest
     steps:
       - uses: kevinrobayna/shipit@v1.7.0
@@ -48,7 +48,7 @@ The following configuration options are supported. To change any of these, simpl
 
 All configuration values, except `GITHUB_TOKEN`, are optional.
 
-- `GITHUB_TOKEN`: _autoupdate_ uses this token to perform its operations on your repository. This should generally be set to `"${{ secrets.GITHUB_TOKEN }}"`.
+- `GITHUB_TOKEN`: _shipit_ uses this token to perform its operations on your repository. This should generally be set to `"${{ secrets.GITHUB_TOKEN }}"`.
 
   You _may_ want to override this if you want the action to run as a different user than the default actions bot.
 
@@ -56,42 +56,42 @@ All configuration values, except `GITHUB_TOKEN`, are optional.
 
   In dry run mode, merge/update operations are logged to the console but not performed. This can be useful if you're testing this action or testing a particular configuration value.
 
-- `PR_FILTER`: Controls how _autoupdate_ chooses which pull requests to operate on. Possible values are:
+- `PR_FILTER`: Controls how _shipit_ chooses which pull requests to operate on. Possible values are:
 
-  - `"all"` (default): No filter, _autoupdate_ will monitor and update all pull requests.
-  - `"labelled"`: Only monitor PRs with a particular label (or set of labels). Requires the `PR_LABELS` option to be defined to. If `PR_LABELS` is not defined, _autoupdate_ will not monitor any pull requests.
+  - `"all"` (default): No filter, _shipit_ will monitor and update all pull requests.
+  - `"labelled"`: Only monitor PRs with a particular label (or set of labels). Requires the `PR_LABELS` option to be defined to. If `PR_LABELS` is not defined, _shipit_ will not monitor any pull requests.
   - `"protected"`: Only monitor PRs that are raised against [protected branches](https://help.github.com/en/github/administering-a-repository/about-protected-branches).
   - `"auto_merge"`: Only monitor PRs that have ['auto merge'](https://docs.github.com/en/github/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/automatically-merging-a-pull-request) enabled
 
-- `PR_LABELS`: Controls which labels _autoupdate_ will look for when monitoring PRs. Only used if `PR_FILTER="labelled"`. This can be either a single label or a comma-separated list of labels.
+- `PR_LABELS`: Controls which labels _shipit_ will look for when monitoring PRs. Only used if `PR_FILTER="labelled"`. This can be either a single label or a comma-separated list of labels.
 
-- `PR_READY_STATE`: Controls how _autoupdate_ monitors pull requests based on their current [draft / ready for review](https://help.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request) state. Possible values are:
+- `PR_READY_STATE`: Controls how _shipit_ monitors pull requests based on their current [draft / ready for review](https://help.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/changing-the-stage-of-a-pull-request) state. Possible values are:
 
-  - `"all"`: (default): No filter, _autoupdate_ will monitor and update pull requests regardless of ready state.
+  - `"all"`: (default): No filter, _shipit_ will monitor and update pull requests regardless of ready state.
   - `"ready_for_review"`: Only monitor PRs that are not currently in the draft state.
   - `"draft"`: Only monitor PRs that are currently in the draft state.
 
-- `EXCLUDED_LABELS`: Controls which labels _autoupdate_ will ignore when evaluating otherwise-included PRs. This option works with all `PR_FILTER` options and can be either a single label or a comma-separated list of labels.
+- `EXCLUDED_LABELS`: Controls which labels _shipit_ will ignore when evaluating otherwise-included PRs. This option works with all `PR_FILTER` options and can be either a single label or a comma-separated list of labels.
 
 - `MERGE_MSG`: A custom message to use when creating the merge commit from the destination branch to your pull request's branch.
 
-- `RETRY_COUNT`: The number of times a branch update should be attempted before _autoupdate_ gives up (default: `"5"`).
+- `RETRY_COUNT`: The number of times a branch update should be attempted before _shipit_ gives up (default: `"5"`).
 
-- `RETRY_SLEEP`: The amount of time (in milliseconds) that _autoupdate_ should wait between branch update attempts (default: `"300"`).
+- `RETRY_SLEEP`: The amount of time (in milliseconds) that _shipit_ should wait between branch update attempts (default: `"300"`).
 
-- `MERGE_CONFLICT_ACTION`: Controls how _autoupdate_ handles a merge conflict when updating a PR. Possible values are:
-  - `"fail"` (default): _autoupdate_ will report a failure on each PR that has a merge conflict.
-  - `"ignore"`: _autoupdate_ will silently ignore merge conflicts.
+- `MERGE_CONFLICT_ACTION`: Controls how _shipit_ handles a merge conflict when updating a PR. Possible values are:
+  - `"fail"` (default): _shipit_ will report a failure on each PR that has a merge conflict.
+  - `"ignore"`: _shipit_ will silently ignore merge conflicts.
 
 Here's an example workflow file with all of the above options specified:
 
 ```yaml
-name: autoupdate
+name: shipit
 on:
   push: {}
 jobs:
-  autoupdate:
-    name: autoupdate
+  shipit:
+    name: shipit
     runs-on: ubuntu-latest
     steps:
       - uses: kevinrobayna/shipit@v1.7.0
@@ -99,7 +99,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           DRY_RUN: "false"
           PR_FILTER: "labelled"
-          PR_LABELS: "autoupdate,keep up-to-date,integration"
+          PR_LABELS: "shipit,keep up-to-date,integration"
           EXCLUDED_LABELS: "dependencies,wontfix"
           MERGE_MSG: "Branch was auto-updated."
           RETRY_COUNT: "5"
@@ -116,34 +116,34 @@ jobs:
 Here's an example workflow file with the outputs above:
 
 ```yaml
-name: autoupdate
+name: shipit
 on:
   push: {}
 jobs:
-  autoupdate:
-    name: autoupdate
+  shipit:
+    name: shipit
     runs-on: ubuntu-latest
     steps:
       - uses: kevinrobayna/shipit@v1.7.0
-        id: autoupdate
+        id: shipit
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           MERGE_CONFLICT_ACTION: "ignore"
 
       - run: echo 'Merge conflicts found!'
-        if: ${{ steps.autoupdate.outputs.conflicted }}
+        if: ${{ steps.shipit.outputs.conflicted }}
 
       - run: echo 'No merge conflicts'
-        if: ${{ !steps.autoupdate.outputs.conflicted }}
+        if: ${{ !steps.shipit.outputs.conflicted }}
 ```
 
 ## Examples
 
-See [chinthakagodawita/autoupdate-test/pulls](https://github.com/chinthakagodawita/autoupdate-test/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc) for a repository where autoupdate is enabled. This is currently configured to only run on PRs that have the `autoupdate` tag added to them.
+See [chinthakagodawita/autoupdate-test/pulls](https://github.com/chinthakagodawita/autoupdate-test/pulls?q=is%3Apr+is%3Aopen+sort%3Aupdated-desc) for a repository where shipit is enabled. This is currently configured to only run on PRs that have the `shipit` tag added to them.
 
 Here's a screenshot:
 
-![An example of autoupdate running on a pull request](/docs/images/autoupdate-example.png)
+![An example of shipit running on a pull request](/docs/images/autoupdate-example.png)
 
 ## Limitations
 
