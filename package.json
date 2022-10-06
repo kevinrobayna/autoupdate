@@ -34,7 +34,7 @@
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-jest": "^27.1.0",
+    "eslint-plugin-jest": "^27.1.1",
     "eslint-plugin-prettier": "^4.2.1",
     "jest": "^28.1.1",
     "jest-ts-auto-mock": "^2.1.0",
