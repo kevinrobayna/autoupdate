@@ -39,7 +39,7 @@
     "jest": "^28.1.1",
     "jest-ts-auto-mock": "^2.1.0",
     "nock": "^13.3.3",
-    "prettier": "2.8.8",
+    "prettier": "3.0.3",
     "ts-auto-mock": "^3.6.4",
     "ts-jest": "^28.0.8"
   },
