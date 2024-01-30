@@ -1,3 +1,5 @@
+This is now deprecated, you should start using GH Merge queue! Here is an [article](https://kevinrobayna.com/posts/farewell-shipit-hello-merge-queue/) I wrote about this.
+
 # Ship It!
 
 ![Tests](https://github.com/chinthakagodawita/autoupdate/workflows/Tests/badge.svg?event=push) [![codecov](https://codecov.io/gh/chinthakagodawita/autoupdate/branch/master/graph/badge.svg)](https://codecov.io/gh/chinthakagodawita/autoupdate)
